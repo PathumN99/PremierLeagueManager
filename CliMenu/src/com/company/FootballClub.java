@@ -9,9 +9,9 @@ public class FootballClub extends SportsClub {
     private int numOfPoints;
     private int matchesPlayed;
 
-    public FootballClub(String clubName, String clubLocation, int wins, int draws, int defeats,
+    public FootballClub(int clubId, String clubName, String clubLocation, int wins, int draws, int defeats,
                         int goalsReceived, int goalsScored, int numOfPoints, int matchesPlayed) {
-        super(clubName, clubLocation);
+        super(clubId, clubName, clubLocation);
         this.wins = wins;
         this.draws = draws;
         this.defeats = defeats;
@@ -24,7 +24,10 @@ public class FootballClub extends SportsClub {
     @Override
     public String toString() {
         return "FootballClub { " +
-                "wins=" + wins +
+                "Club ID=" + super.getClubId() +
+                ", Name=" + super.getClubName() +
+                ", Location=" + super.getClubLocation() +
+                ", wins=" + wins +
                 ", draws=" + draws +
                 ", defeats=" + defeats +
                 ", goalsReceived=" + goalsReceived +

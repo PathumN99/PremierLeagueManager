@@ -9,6 +9,7 @@ public class PremierLeagueManager implements LeagueManager {
     public static ArrayList<String> testList = new ArrayList<String>();
 
     public static void main(String[] args) {
+
         while (true) {
 
             System.out.println("--------------------------------------");
@@ -37,12 +38,10 @@ public class PremierLeagueManager implements LeagueManager {
                       break;
 
                   case 2 :
-                      for (FootballClub item: clubList) {
-                          System.out.println(item);
-                      }
                       break;
 
                   case 3 :
+                      viewClubStats();
                       break;
 
                   case 4 :
@@ -69,6 +68,12 @@ public class PremierLeagueManager implements LeagueManager {
         Scanner scanner = new Scanner(System.in);
 
         try {
+            int genClubID = 1;
+
+            if(clubList.size() != 0) {
+                genClubID = clubList.get(clubList.size() - 1).getClubId() + 1;
+            }
+
             System.out.print("Enter the club name : ");
             String clbNameInput = scanner.next();
 
@@ -96,15 +101,25 @@ public class PremierLeagueManager implements LeagueManager {
             System.out.print("Enter the club played matches : ");
             int playedMatInput = scanner.nextInt();
 
-            FootballClub footballClub = new FootballClub(clbNameInput,clbLocInput,clbWinsInput,clbDrawsInput,
+            FootballClub footballClub = new FootballClub(genClubID, clbNameInput,clbLocInput,clbWinsInput,clbDrawsInput,
                     clbDefeatsInput,recGoalsInput,scoredGoalsInput,pointsInput,playedMatInput);
 
             clubList.add(footballClub);
             System.out.println("Football club successfully added!");
 
         } catch (Exception e) {
-            System.out.println("Error : "+ e + " Check input and Try again!");
+            System.out.println("Error : "+ e + " - Check input and Try again!");
         }
+    }
+
+    public static void viewClubStats() {
+        for (FootballClub item: clubList) {
+            System.out.println(item);
+        }
+    }
+
+    public static void deleteFootballClub() {
+
     }
 
 }
