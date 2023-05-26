@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class PremierLeagueManager implements LeagueManager {
@@ -12,9 +13,9 @@ public class PremierLeagueManager implements LeagueManager {
 
         while (true) {
 
-            System.out.println("--------------------------------------");
+            System.out.println("-------------------------------------");
             System.out.println("Welcome to the premier league manager");
-            System.out.println("--------------------------------------");
+            System.out.println("-------------------------------------");
             System.out.println(" ");
             System.out.println("Press 1 to add a football club");
             System.out.println("Press 2 to delete a football club");
@@ -38,6 +39,7 @@ public class PremierLeagueManager implements LeagueManager {
                       break;
 
                   case 2 :
+                      deleteFootballClub();
                       break;
 
                   case 3 :
@@ -113,13 +115,44 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     public static void viewClubStats() {
-        for (FootballClub item: clubList) {
-            System.out.println(item);
+        if(clubList.size() != 0 ) {
+            System.out.println("..................................");
+            System.out.println("            Clubs List            ");
+            System.out.println("..................................");
+            for (FootballClub item: clubList) {
+                System.out.println(item);
+            }
+        } else {
+            System.out.println("Club list is empty!");
         }
     }
 
     public static void deleteFootballClub() {
 
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter the club ID you want to delete : ");
+            int delClubId = scanner.nextInt();
+            boolean clubExist = false;
+
+            Iterator<FootballClub> clubIterator = clubList.iterator();
+
+            while (clubIterator.hasNext()) {
+                FootballClub item = clubIterator.next();
+                if (item.getClubId() == delClubId) {
+                    clubIterator.remove();
+                    clubExist = true;
+                    System.out.println("Club successfully deleted!");
+                }
+            }
+
+            if (clubExist == false) {
+                System.out.println("Entered club ID does not exist!");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error : " + e + " - Try again!");
+        }
     }
 
 }
