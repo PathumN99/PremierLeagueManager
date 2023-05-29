@@ -31,6 +31,58 @@ public class FootballClub extends SportsClub {
         return this.goalsScored - this.goalsReceived;
     }
 
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public int getDefeats() {
+        return defeats;
+    }
+
+    public int getGoalsReceived() {
+        return goalsReceived;
+    }
+
+    public int getGoalsScored() {
+        return goalsScored;
+    }
+
+    public int getMatchesPlayed() {
+        return matchesPlayed;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public void setDefeats(int defeats) {
+        this.defeats = defeats;
+    }
+
+    public void setGoalsReceived(int goalsReceived) {
+        this.goalsReceived = goalsReceived;
+    }
+
+    public void setGoalsScored(int goalsScored) {
+        this.goalsScored = goalsScored;
+    }
+
+    public void setNumOfPoints(int numOfPoints) {
+        this.numOfPoints = numOfPoints;
+    }
+
+    public void setMatchesPlayed(int matchesPlayed) {
+        this.matchesPlayed = matchesPlayed;
+    }
+
     @Override
     public String toString() {
         return "FootballClub { " +

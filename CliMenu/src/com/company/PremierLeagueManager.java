@@ -5,7 +5,7 @@ import java.util.*;
 public class PremierLeagueManager implements LeagueManager {
 
     public static ArrayList<FootballClub> clubList = new ArrayList<FootballClub>();
-    public static ArrayList<String> testList = new ArrayList<String>();
+    public static ArrayList<PlayedMatch> playedMatch = new ArrayList<PlayedMatch>();
 
     public static void main(String[] args) {
 
@@ -49,6 +49,7 @@ public class PremierLeagueManager implements LeagueManager {
                       break;
 
                   case 5 :
+                      addPlayedMatch();
                       break;
 
                   case 6 :
@@ -176,6 +177,76 @@ public class PremierLeagueManager implements LeagueManager {
         for (FootballClub item: clubList) {
             System.out.println(item);
         }
+    }
+
+    public static void addPlayedMatch() {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+
+            System.out.print("Enter the year : ");
+            int year = scanner.nextInt();
+
+            if(year > 2030 || year < 1989) {
+                throw new Exception("Entered year is not valid!");
+            }
+
+            System.out.print("Enter the month : ");
+            int month = scanner.nextInt();
+
+            if(month == 0 || month > 12) {
+                throw new Exception("Entered Month is not valid!");
+            }
+
+            System.out.print("Enter the Day : ");
+            int day = scanner.nextInt();
+
+            if(day == 0 || day > 31) {
+                throw new Exception("Entered Day is not valid!");
+            } else if(month == 2 && day > 28) {
+                throw new Exception("Month of February must have only 28 days!");
+            }
+
+            System.out.print("Enter the winning club's ID : ");
+            int winClubId = scanner.nextInt();
+
+            System.out.print("Number of goals scored by the winning club : ");
+            int goalsScoredWinClub = scanner.nextInt();
+
+            System.out.print("Enter the defeated club's ID : ");
+            int defeatedClubId = scanner.nextInt();
+
+            System.out.print("Number of goals scored by the defeated club : ");
+            int goalsScoredDefClub = scanner.nextInt();
+
+            Iterator<FootballClub> clubIterator = clubList.iterator();
+
+            while (clubIterator.hasNext()) {
+                FootballClub item = clubIterator.next();
+
+                if (item.getClubId() == winClubId) {
+                    item.setWins(item.getWins() + 1);
+                    item.setGoalsReceived(item.getGoalsReceived() + goalsScoredDefClub);
+                    item.setGoalsScored(item.getGoalsScored() + goalsScoredWinClub);
+                    item.setNumOfPoints(item.getNumOfPoints() + 1);
+                    item.setMatchesPlayed(item.getMatchesPlayed() + 1);
+                    System.out.println("Club: "+ winClubId + "stats updated successfully!");
+                }
+
+                if (item.getClubId() == defeatedClubId) {
+                    item.setDefeats(item.getDefeats() + 1);
+                    item.setGoalsReceived(item.getGoalsReceived() + goalsScoredWinClub);
+                    item.setGoalsScored(item.getGoalsScored() + goalsScoredDefClub);
+                    item.setMatchesPlayed(item.getMatchesPlayed() + 1);
+                    System.out.println("Club: "+ defeatedClubId + "stats updated successfully!");
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error : "+ e.getMessage() + " - Try again!");
+        }
+
+
     }
 
 }
