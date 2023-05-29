@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Comparator;
+
 public class FootballClub extends SportsClub {
     private int wins;
     private int draws;
@@ -21,6 +23,14 @@ public class FootballClub extends SportsClub {
         this.matchesPlayed = matchesPlayed;
     }
 
+    public int getNumOfPoints() {
+        return this.numOfPoints;
+    }
+
+    public int getGoalDifference() {
+        return this.goalsScored - this.goalsReceived;
+    }
+
     @Override
     public String toString() {
         return "FootballClub { " +
@@ -36,4 +46,15 @@ public class FootballClub extends SportsClub {
                 ", matchesPlayed=" + matchesPlayed +
                 " } ";
     }
+
+//    @Override
+//    public int compareTo(FootballClub compareClub) {
+//        int comparePoints = ((FootballClub)compareClub).getNumOfPoints();
+//        return this.numOfPoints - comparePoints;
+//    }
+
+//    @Override
+//    public int compareTo(FootballClub o) {
+//        return 0;
+//    }
 }

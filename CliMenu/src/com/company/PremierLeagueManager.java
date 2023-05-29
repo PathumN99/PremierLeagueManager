@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class PremierLeagueManager implements LeagueManager {
 
@@ -20,7 +18,7 @@ public class PremierLeagueManager implements LeagueManager {
             System.out.println("Press 1 to add a football club");
             System.out.println("Press 2 to delete a football club");
             System.out.println("Press 3 to display club statistics");
-            System.out.println("Press 4 to display the premier league table");
+            System.out.println("Press 4 to display the sorted premier league points table");
             System.out.println("Press 5 to add a played match");
             System.out.println("Press 6 to save the information");
             System.out.println("Press 7 to exit");
@@ -47,6 +45,7 @@ public class PremierLeagueManager implements LeagueManager {
                       break;
 
                   case 4 :
+                      displayLeagueTable();
                       break;
 
                   case 5 :
@@ -152,6 +151,30 @@ public class PremierLeagueManager implements LeagueManager {
 
         } catch (Exception e) {
             System.out.println("Error : " + e + " - Try again!");
+        }
+    }
+
+    public static void displayLeagueTable() {
+
+        Comparator<FootballClub> comparator = new Comparator<FootballClub>() {
+            @Override
+            public int compare(FootballClub obj1, FootballClub obj2) {
+
+                if(obj1.getNumOfPoints() < obj2.getNumOfPoints()) {
+                    return 1;   // value 1 swaps the objects
+                } else if ((obj1.getNumOfPoints() == obj2.getNumOfPoints())
+                        && (obj1.getGoalDifference() < obj2.getGoalDifference())) {
+                    return 1;
+                } else {
+                    return -1;   // value -1 will not swap the objects
+                }
+            }
+        };
+
+        Collections.sort(clubList, comparator);
+
+        for (FootballClub item: clubList) {
+            System.out.println(item);
         }
     }
 
