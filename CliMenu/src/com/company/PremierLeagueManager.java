@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.*;
 import java.util.*;
 
 public class PremierLeagueManager implements LeagueManager {
@@ -7,22 +8,25 @@ public class PremierLeagueManager implements LeagueManager {
     public static ArrayList<FootballClub> clubList = new ArrayList<FootballClub>();
     public static ArrayList<PlayedMatch> playedMatch = new ArrayList<PlayedMatch>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        loadDataToList();
 
         while (true) {
 
             System.out.println("-------------------------------------");
             System.out.println("Welcome to the premier league manager");
             System.out.println("-------------------------------------");
-            System.out.println(" ");
             System.out.println("Press 1 to add a football club");
             System.out.println("Press 2 to delete a football club");
             System.out.println("Press 3 to display club statistics");
             System.out.println("Press 4 to display the sorted premier league points table");
             System.out.println("Press 5 to add a played match");
-            System.out.println("Press 6 to save the information");
-            System.out.println("Press 7 to exit");
-            System.out.println(" ");
+            System.out.println("Press 6 to save the information to file");
+            System.out.println("Press 7 to load the information from file");
+            System.out.println("Press 8 to Reset the data file");
+            System.out.println("Press 9 to Exit");
+            System.out.println("--------------------------------------");
 
             System.out.print("Select an option : ");
             Scanner sc = new Scanner(System.in);
@@ -53,9 +57,18 @@ public class PremierLeagueManager implements LeagueManager {
                       break;
 
                   case 6 :
+                      saveDataToFile();
                       break;
 
                   case 7 :
+                      loadDataFromFile();
+                      break;
+
+                  case 8 :
+                      resetDataFile();
+                      break;
+
+                  case 9 :
                       System.out.println("Terminating program!");
                       System.exit(0);
               }
@@ -247,6 +260,69 @@ public class PremierLeagueManager implements LeagueManager {
         }
 
 
+    }
+
+    public static void saveDataToFile() {
+        try{
+            File file = new File("ClubData.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(clubList);
+            oos.close();
+            System.out.println("Football club data saved into the file successfully!");
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadDataFromFile() {
+        try{
+            File file = new File("ClubData.txt");
+            ArrayList<FootballClub> tempList;
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+
+            tempList = (ArrayList<FootballClub>) ois.readObject();
+
+            System.out.println("-----------Football club data ------------");
+            for (FootballClub item: tempList) {
+                System.out.println(item);
+            }
+            System.out.println("------------------------------------------");
+
+            ois.close();
+
+        } catch (Exception e) {
+            System.out.println(e);;
+        }
+    }
+
+    public static void loadDataToList() {
+        try{
+            File file = new File("ClubData.txt");
+            ArrayList<FootballClub> tempList;
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+            tempList = (ArrayList<FootballClub>) ois.readObject();
+            clubList.addAll(tempList);
+
+            ois.close();
+
+        } catch (Exception e) {
+            System.out.println(e);;
+        }
+    }
+
+    public static void resetDataFile() {
+        try{
+            File file = new File("ClubData.txt");
+            ArrayList<FootballClub> emptyList = new ArrayList<FootballClub>();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(emptyList);
+            oos.close();
+            System.out.println("Club data file reset successfully!");
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

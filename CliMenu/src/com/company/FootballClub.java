@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class FootballClub extends SportsClub {
+public class FootballClub extends SportsClub implements Serializable {
     private int wins;
     private int draws;
     private int defeats;
