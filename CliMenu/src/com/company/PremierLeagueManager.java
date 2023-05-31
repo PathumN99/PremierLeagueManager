@@ -10,7 +10,8 @@ public class PremierLeagueManager implements LeagueManager {
 
     public static void main(String[] args) throws Exception {
 
-        loadDataToList();
+        LeagueManager premierLeagueManager = new PremierLeagueManager();
+        premierLeagueManager.loadDataToList();
 
         while (true) {
 
@@ -37,35 +38,35 @@ public class PremierLeagueManager implements LeagueManager {
               switch (userInput) {
 
                   case 1 :
-                      addFootballClub();
+                      premierLeagueManager.addFootballClub();
                       break;
 
                   case 2 :
-                      deleteFootballClub();
+                      premierLeagueManager.deleteFootballClub();
                       break;
 
                   case 3 :
-                      viewClubStats();
+                      premierLeagueManager.viewClubStats();
                       break;
 
                   case 4 :
-                      displayLeagueTable();
+                      premierLeagueManager.displayLeagueTable();
                       break;
 
                   case 5 :
-                      addPlayedMatch();
+                      premierLeagueManager.addPlayedMatch();
                       break;
 
                   case 6 :
-                      saveDataToFile();
+                      premierLeagueManager.saveDataToFile();
                       break;
 
                   case 7 :
-                      loadDataFromFile();
+                      premierLeagueManager.loadDataFromFile();
                       break;
 
                   case 8 :
-                      resetDataFile();
+                      premierLeagueManager.resetDataFile();
                       break;
 
                   case 9 :
@@ -79,7 +80,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void addFootballClub() {
+    @Override
+    public void addFootballClub() {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -127,7 +129,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void viewClubStats() {
+    @Override
+    public void viewClubStats() {
         if(clubList.size() != 0 ) {
             System.out.println("..................................");
             System.out.println("            Clubs List            ");
@@ -140,7 +143,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void deleteFootballClub() {
+    @Override
+    public void deleteFootballClub() {
 
         try {
             Scanner scanner = new Scanner(System.in);
@@ -168,7 +172,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void displayLeagueTable() {
+    @Override
+    public void displayLeagueTable() {
 
         Comparator<FootballClub> comparator = new Comparator<FootballClub>() {
             @Override
@@ -192,7 +197,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void addPlayedMatch() {
+    @Override
+    public void addPlayedMatch() {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -262,7 +268,8 @@ public class PremierLeagueManager implements LeagueManager {
 
     }
 
-    public static void saveDataToFile() {
+    @Override
+    public void saveDataToFile() {
         try{
             File file = new File("ClubData.txt");
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -275,7 +282,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void loadDataFromFile() {
+    @Override
+    public void loadDataFromFile() {
         try{
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> tempList;
@@ -296,7 +304,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void loadDataToList() {
+    @Override
+    public void loadDataToList() {
         try{
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> tempList;
@@ -311,7 +320,8 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    public static void resetDataFile() {
+    @Override
+    public void resetDataFile() {
         try{
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> emptyList = new ArrayList<FootballClub>();
