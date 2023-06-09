@@ -7,7 +7,7 @@ public class SportsClub implements Serializable {
     private String clubLocation;
     private int clubId;
 
-    public SportsClub( int clubId, String clubName, String clubLocation) {
+    public SportsClub(int clubId, String clubName, String clubLocation) {
         this.clubId = clubId;
         this.clubName = clubName;
         this.clubLocation = clubLocation;

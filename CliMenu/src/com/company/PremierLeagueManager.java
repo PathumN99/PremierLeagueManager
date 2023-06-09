@@ -33,46 +33,46 @@ public class PremierLeagueManager implements LeagueManager {
             Scanner sc = new Scanner(System.in);
 
             if (sc.hasNextInt()) {
-              int userInput = sc.nextInt();
+                int userInput = sc.nextInt();
 
-              switch (userInput) {
+                switch (userInput) {
 
-                  case 1 :
-                      premierLeagueManager.addFootballClub();
-                      break;
+                    case 1:
+                        premierLeagueManager.addFootballClub();
+                        break;
 
-                  case 2 :
-                      premierLeagueManager.deleteFootballClub();
-                      break;
+                    case 2:
+                        premierLeagueManager.deleteFootballClub();
+                        break;
 
-                  case 3 :
-                      premierLeagueManager.viewClubStats();
-                      break;
+                    case 3:
+                        premierLeagueManager.viewClubStats();
+                        break;
 
-                  case 4 :
-                      premierLeagueManager.displayLeagueTable();
-                      break;
+                    case 4:
+                        premierLeagueManager.displayLeagueTable();
+                        break;
 
-                  case 5 :
-                      premierLeagueManager.addPlayedMatch();
-                      break;
+                    case 5:
+                        premierLeagueManager.addPlayedMatch();
+                        break;
 
-                  case 6 :
-                      premierLeagueManager.saveDataToFile();
-                      break;
+                    case 6:
+                        premierLeagueManager.saveDataToFile();
+                        break;
 
-                  case 7 :
-                      premierLeagueManager.loadDataFromFile();
-                      break;
+                    case 7:
+                        premierLeagueManager.loadDataFromFile();
+                        break;
 
-                  case 8 :
-                      premierLeagueManager.resetDataFile();
-                      break;
+                    case 8:
+                        premierLeagueManager.resetDataFile();
+                        break;
 
-                  case 9 :
-                      System.out.println("Terminating program!");
-                      System.exit(0);
-              }
+                    case 9:
+                        System.out.println("Terminating program!");
+                        System.exit(0);
+                }
 
             } else {
                 System.out.println("Please enter a valid input!");
@@ -87,7 +87,7 @@ public class PremierLeagueManager implements LeagueManager {
         try {
             int genClubID = 1;
 
-            if(clubList.size() != 0) {
+            if (clubList.size() != 0) {
                 genClubID = clubList.get(clubList.size() - 1).getClubId() + 1;
             }
 
@@ -118,24 +118,24 @@ public class PremierLeagueManager implements LeagueManager {
             System.out.print("Enter the club played matches : ");
             int playedMatInput = scanner.nextInt();
 
-            FootballClub footballClub = new FootballClub(genClubID, clbNameInput,clbLocInput,clbWinsInput,clbDrawsInput,
-                    clbDefeatsInput,recGoalsInput,scoredGoalsInput,pointsInput,playedMatInput);
+            FootballClub footballClub = new FootballClub(genClubID, clbNameInput, clbLocInput, clbWinsInput, clbDrawsInput,
+                    clbDefeatsInput, recGoalsInput, scoredGoalsInput, pointsInput, playedMatInput);
 
             clubList.add(footballClub);
             System.out.println("Football club successfully added!");
 
         } catch (Exception e) {
-            System.out.println("Error : "+ e + " - Check input and Try again!");
+            System.out.println("Error : " + e + " - Check input and Try again!");
         }
     }
 
     @Override
     public void viewClubStats() {
-        if(clubList.size() != 0 ) {
+        if (clubList.size() != 0) {
             System.out.println("..................................");
             System.out.println("            Clubs List            ");
             System.out.println("..................................");
-            for (FootballClub item: clubList) {
+            for (FootballClub item : clubList) {
                 System.out.println(item);
             }
         } else {
@@ -179,7 +179,7 @@ public class PremierLeagueManager implements LeagueManager {
             @Override
             public int compare(FootballClub obj1, FootballClub obj2) {
 
-                if(obj1.getNumOfPoints() < obj2.getNumOfPoints()) {
+                if (obj1.getNumOfPoints() < obj2.getNumOfPoints()) {
                     return 1;   // value 1 swaps the objects
                 } else if ((obj1.getNumOfPoints() == obj2.getNumOfPoints())
                         && (obj1.getGoalDifference() < obj2.getGoalDifference())) {
@@ -192,7 +192,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         Collections.sort(clubList, comparator);
 
-        for (FootballClub item: clubList) {
+        for (FootballClub item : clubList) {
             System.out.println(item);
         }
     }
@@ -206,23 +206,23 @@ public class PremierLeagueManager implements LeagueManager {
             System.out.print("Enter the year : ");
             int year = scanner.nextInt();
 
-            if(year > 2030 || year < 1989) {
+            if (year > 2030 || year < 1989) {
                 throw new Exception("Entered year is not valid!");
             }
 
             System.out.print("Enter the month : ");
             int month = scanner.nextInt();
 
-            if(month == 0 || month > 12) {
+            if (month == 0 || month > 12) {
                 throw new Exception("Entered Month is not valid!");
             }
 
             System.out.print("Enter the Day : ");
             int day = scanner.nextInt();
 
-            if(day == 0 || day > 31) {
+            if (day == 0 || day > 31) {
                 throw new Exception("Entered Day is not valid!");
-            } else if(month == 2 && day > 28) {
+            } else if (month == 2 && day > 28) {
                 throw new Exception("Month of February must have only 28 days!");
             }
 
@@ -249,7 +249,7 @@ public class PremierLeagueManager implements LeagueManager {
                     item.setGoalsScored(item.getGoalsScored() + goalsScoredWinClub);
                     item.setNumOfPoints(item.getNumOfPoints() + 1);
                     item.setMatchesPlayed(item.getMatchesPlayed() + 1);
-                    System.out.println("Club: "+ winClubId + "stats updated successfully!");
+                    System.out.println("Club: " + winClubId + "stats updated successfully!");
                 }
 
                 if (item.getClubId() == defeatedClubId) {
@@ -257,12 +257,12 @@ public class PremierLeagueManager implements LeagueManager {
                     item.setGoalsReceived(item.getGoalsReceived() + goalsScoredWinClub);
                     item.setGoalsScored(item.getGoalsScored() + goalsScoredDefClub);
                     item.setMatchesPlayed(item.getMatchesPlayed() + 1);
-                    System.out.println("Club: "+ defeatedClubId + "stats updated successfully!");
+                    System.out.println("Club: " + defeatedClubId + "stats updated successfully!");
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("Error : "+ e.getMessage() + " - Try again!");
+            System.out.println("Error : " + e.getMessage() + " - Try again!");
         }
 
 
@@ -270,21 +270,21 @@ public class PremierLeagueManager implements LeagueManager {
 
     @Override
     public void saveDataToFile() {
-        try{
+        try {
             File file = new File("ClubData.txt");
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
             oos.writeObject(clubList);
             oos.close();
             System.out.println("Football club data saved into the file successfully!");
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     public void loadDataFromFile() {
-        try{
+        try {
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> tempList;
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -292,7 +292,7 @@ public class PremierLeagueManager implements LeagueManager {
             tempList = (ArrayList<FootballClub>) ois.readObject();
 
             System.out.println("-----------Football club data ------------");
-            for (FootballClub item: tempList) {
+            for (FootballClub item : tempList) {
                 System.out.println(item);
             }
             System.out.println("------------------------------------------");
@@ -300,13 +300,14 @@ public class PremierLeagueManager implements LeagueManager {
             ois.close();
 
         } catch (Exception e) {
-            System.out.println(e);;
+            System.out.println(e);
+            ;
         }
     }
 
     @Override
     public void loadDataToList() {
-        try{
+        try {
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> tempList;
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -316,13 +317,14 @@ public class PremierLeagueManager implements LeagueManager {
             ois.close();
 
         } catch (Exception e) {
-            System.out.println(e);;
+            System.out.println(e);
+            ;
         }
     }
 
     @Override
     public void resetDataFile() {
-        try{
+        try {
             File file = new File("ClubData.txt");
             ArrayList<FootballClub> emptyList = new ArrayList<FootballClub>();
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -330,7 +332,7 @@ public class PremierLeagueManager implements LeagueManager {
             oos.close();
             System.out.println("Club data file reset successfully!");
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
