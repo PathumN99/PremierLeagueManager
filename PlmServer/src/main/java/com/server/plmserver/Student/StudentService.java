@@ -29,6 +29,7 @@ public class StudentService {
         return studentRepository.save(studentEntity);
     }
 
+//    save method can be used for both create and update.
     public StudentEntity updateStudent(StudentEntity studentEntity) {
         return studentRepository.save(studentEntity);
     }

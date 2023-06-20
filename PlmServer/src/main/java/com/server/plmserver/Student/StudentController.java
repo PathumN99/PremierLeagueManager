@@ -24,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<StudentEntity> findStudent(@PathVariable("id") Long id) {
+    public Optional<StudentEntity> findStudent(@PathVariable Long id) {
         return studentService.findStudent(id);
     }
 
@@ -33,8 +33,9 @@ public class StudentController {
         return studentService.saveStudent(studentEntity);
     }
 
-    @PutMapping
-    public StudentEntity updateStudent(@RequestBody StudentEntity studentEntity) {
+    @PutMapping("/update/{id}")
+    public StudentEntity updateStudent(@PathVariable Long id, @RequestBody StudentEntity studentEntity) {
+        studentEntity.setId(id);
         return studentService.updateStudent(studentEntity);
     }
 
