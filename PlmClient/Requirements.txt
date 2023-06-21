@@ -1,0 +1,5 @@
+start the application
+    ng serve
+
+Angular Material
+    ng add @angular/material
