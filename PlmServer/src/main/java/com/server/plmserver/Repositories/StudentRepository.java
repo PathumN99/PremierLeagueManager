@@ -1,6 +1,6 @@
-package com.server.plmserver.Student.repository;
+package com.server.plmserver.Repositories;
 
-import com.server.plmserver.Student.entity.StudentEntity;
+import com.server.plmserver.Entities.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

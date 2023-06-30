@@ -1,6 +1,4 @@
-package com.server.plmserver.Student.entity;
-
-//import javax.persistence.*;
+package com.server.plmserver.Entities;
 
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

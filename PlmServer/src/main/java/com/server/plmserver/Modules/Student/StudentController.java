@@ -1,6 +1,6 @@
-package com.server.plmserver.Student;
+package com.server.plmserver.Modules.Student;
 
-import com.server.plmserver.Student.entity.StudentEntity;
+import com.server.plmserver.Entities.StudentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

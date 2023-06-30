@@ -11,17 +11,20 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ViewClubsComponent implements OnInit {
 
+  elementData: ClubDataInterface[] = []
+  dataSource = new MatTableDataSource<ClubDataInterface>();
   
-  elementData: ClubDataInterface[] = [
-    { name: 'name1', location: 'Texas' },
-    { name: 'name2', location: 'LA' },
-    { name: 'name3', location: 'Washington' },
-    { name: 'name4', location: 'New York' },
+  displayedColumns: string[] = [
+    "clubName",
+    "clubLocation",
+    "wins",
+    "draws",
+    "defeats",
+    "goalsReceived",
+    "goalsScored",
+    "numOfPoints",
+    "matchesPlayed"
   ];
-  displayedColumns: string[] = ['name', 'location'];
-  dataSource = new MatTableDataSource<ClubDataInterface>(this.elementData);
-
-  clubs: any[] = [];
 
   constructor(private service: ClubDetailsService) { }
 
@@ -31,13 +34,16 @@ export class ViewClubsComponent implements OnInit {
 
   fetchData(): void {
     let resp = this.service.getData();
-    resp.subscribe(
-      data => this.clubs = data
-      // error => {
-      //   console.log('An error occurred:', error);
-      // }
-    );
-    
-  }
 
+    resp.subscribe(
+      (data) => {
+        this.elementData = data;
+        this.dataSource = new MatTableDataSource<ClubDataInterface>(this.elementData);
+      },
+      (error) => {
+        console.log('An error occurred:', error);
+      }
+    );
+
+  }
 }

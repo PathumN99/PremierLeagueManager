@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ClubDetailsService {
 
-  private apiUrl = 'http://localhost:8080/api/student';
+  private apiUrl = 'http://localhost:8080/api/football-club';
 
   constructor(private http: HttpClient) { }
 

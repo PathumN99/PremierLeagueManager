@@ -1,7 +1,7 @@
-package com.server.plmserver.Student;
+package com.server.plmserver.Modules.Student;
 
-import com.server.plmserver.Student.repository.StudentRepository;
-import com.server.plmserver.Student.entity.StudentEntity;
+import com.server.plmserver.Repositories.StudentRepository;
+import com.server.plmserver.Entities.StudentEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +19,6 @@ public class StudentService {
     public List<StudentEntity> findAllStudent() {
         return studentRepository.findAll();
     }
-
 
     public Optional<StudentEntity> findStudent(Long id) {
         return studentRepository.findById(id);
