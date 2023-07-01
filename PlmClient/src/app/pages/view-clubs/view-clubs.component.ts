@@ -35,8 +35,7 @@ export class ViewClubsComponent implements OnInit {
   fetchData(): void {
     let resp = this.service.getData();
 
-    resp.subscribe(
-      (data) => {
+    resp.subscribe((data) => {
         this.elementData = data;
         this.dataSource = new MatTableDataSource<ClubDataInterface>(this.elementData);
       },

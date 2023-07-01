@@ -13,6 +13,8 @@ import { ViewClubsComponent } from './pages/view-clubs/view-clubs.component';
 import { AddClubComponent } from './pages/add-club/add-club.component';
 import { DeleteClubComponent } from './pages/delete-club/delete-club.component';
 import { MatTableModule } from '@angular/material/table';
+import { UpdateClubComponent } from './pages/update-club/update-club.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatTableModule } from '@angular/material/table';
     HomePageComponent,
     ViewClubsComponent,
     AddClubComponent,
-    DeleteClubComponent
+    DeleteClubComponent,
+    UpdateClubComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

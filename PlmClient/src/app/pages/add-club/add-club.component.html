@@ -1,1 +1,15 @@
-<p>add-club works!</p>
+<div class="form">
+    <form #submitData="ngForm" (ngSubmit)="onSubmit(submitData.value)" >
+        <input class="textField" type="text" placeholder="Club Name" name="clubName" ngModel> <br>
+        <input class="textField" type="text" placeholder="Club Location" name="clubLocation" ngModel> <br>
+        <input class="numField" type="number" placeholder="Number of Wins" name="wins" ngModel>
+        <input class="numField" type="number" placeholder="Number of Draws" name="draws" ngModel> <br>
+        <input class="numField" type="number" placeholder="Number of Defeats" name="defeats" ngModel>
+        <input class="numField" type="number" placeholder="Received Goals" name="goalsReceived" ngModel> <br>
+        <input class="numField" type="number" placeholder="Scored Goals" name="goalsScored" ngModel>
+        <input class="numField" type="number" placeholder="Number of Points" name="numOfPoints" ngModel> <br>
+        <input class="numField" type="number" placeholder="Played Matches" name="matchesPlayed" ngModel> <br> <br>
+        <button class="submitBtn" type="submit">Submit Data</button>
+    
+    </form>    
+</div>
