@@ -11,12 +11,12 @@ export class ClubDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  public getClubs() {
-    return this.http.get(this.apiUrl);
-  }
-
   getData(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getById(id: number) {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
 }

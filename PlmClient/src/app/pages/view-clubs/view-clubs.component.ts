@@ -13,8 +13,9 @@ export class ViewClubsComponent implements OnInit {
 
   elementData: ClubDataInterface[] = []
   dataSource = new MatTableDataSource<ClubDataInterface>();
-  
+
   displayedColumns: string[] = [
+    "club_id",
     "clubName",
     "clubLocation",
     "wins",
@@ -36,9 +37,9 @@ export class ViewClubsComponent implements OnInit {
     let resp = this.service.getData();
 
     resp.subscribe((data) => {
-        this.elementData = data;
-        this.dataSource = new MatTableDataSource<ClubDataInterface>(this.elementData);
-      },
+      this.elementData = data;
+      this.dataSource = new MatTableDataSource<ClubDataInterface>(this.elementData);
+    },
       (error) => {
         console.log('An error occurred:', error);
       }
