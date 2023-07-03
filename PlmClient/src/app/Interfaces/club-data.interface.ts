@@ -1,4 +1,5 @@
 export interface ClubDataInterface {
+  club_id: number;
   clubName: string;
   clubLocation: string;
   wins: number;

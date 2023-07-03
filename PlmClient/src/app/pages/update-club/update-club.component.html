@@ -1,17 +1,17 @@
 <div class="form">
-    <input class="numField" type="number" placeholder="Club ID" name="club_id" [(ngModel)]="singleVal">
+    <input class="numField" required type="number" placeholder="Club ID" name="club_id" [(ngModel)]="param">
     <button class="submitBtn" (click)="uponClick()" type="button">Get Club Stats</button> <br>
     
     <form #submitData="ngForm" (ngSubmit)="onSubmit(submitData.value)">        
-        <input class="textField" type="text" placeholder="Club Name"  name="clubName" [(ngModel)]="sampleValue"> <br>
-        <input class="textField" type="text" placeholder="Club Locaition" name="clubLocation" [(ngModel)]="sampleValue"> <br>
-        <input class="numField" type="number" placeholder="Number of Wins" name="wins" [(ngModel)]="sampleNumber">
-        <input class="numField" type="number" placeholder="Number of Draws" name="draws" [(ngModel)]="sampleNumber"> <br>
-        <input class="numField" type="number" placeholder="Number of Defeats" name="defeats" [(ngModel)]="sampleNumber">
-        <input class="numField" type="number" placeholder="Received Goals" name="goalsReceived" [(ngModel)]="sampleNumber"> <br>
-        <input class="numField" type="number" placeholder="Scored Goals" name="goalsScored" [(ngModel)]="sampleNumber">
-        <input class="numField" type="number" placeholder="Number of Points" name="numOfPoints" [(ngModel)]="sampleNumber"> <br>
-        <input class="numField" type="number" placeholder="Played Matches" name="matchesPlayed" [(ngModel)]="sampleNumber"> <br> <br>
+        <input class="textField" type="text" placeholder="Club Name"  name="clubName" [(ngModel)]="sampleObj.clubName"> <br>
+        <input class="textField" type="text" placeholder="Club Locaition" name="clubLocation" [(ngModel)]="sampleObj.clubLocation"> <br>
+        <input class="numField" type="number" placeholder="Number of Wins" name="wins" [(ngModel)]="sampleObj.wins">
+        <input class="numField" type="number" placeholder="Number of Draws" name="draws" [(ngModel)]="sampleObj.draws"> <br>
+        <input class="numField" type="number" placeholder="Number of Defeats" name="defeats" [(ngModel)]="sampleObj.defeats">
+        <input class="numField" type="number" placeholder="Received Goals" name="goalsReceived" [(ngModel)]="sampleObj.goalsReceived"> <br>
+        <input class="numField" type="number" placeholder="Scored Goals" name="goalsScored" [(ngModel)]="sampleObj.goalsScored">
+        <input class="numField" type="number" placeholder="Number of Points" name="numOfPoints" [(ngModel)]="sampleObj.numOfPoints"> <br>
+        <input class="numField" type="number" placeholder="Played Matches" name="matchesPlayed" [(ngModel)]="sampleObj.matchesPlayed"> <br> <br>
         <button class="submitBtn" type="submit">Update Data</button>
     
     </form>    

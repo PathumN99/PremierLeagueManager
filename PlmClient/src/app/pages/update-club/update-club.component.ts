@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ClubDataInterface } from 'src/app/Interfaces/club-data.interface';
 import { ClubDetailsService } from 'src/app/services/club-details.service';
 
 @Component({
@@ -11,17 +12,26 @@ export class UpdateClubComponent {
 
   constructor(private http: HttpClient, private service: ClubDetailsService) { }
 
-  singleVal: number = 1;
-  sampleValue: string = "sample value";
-  sampleNumber: number = 5;
-  sampleObj = {};
+  param = null;
+
+  sampleObj: any = {
+    club_id: undefined,
+    clubName: undefined,
+    clubLocation: undefined,
+    wins: undefined,
+    draws: undefined,
+    defeats: undefined,
+    goalsReceived: undefined,
+    goalsScored: undefined,
+    numOfPoints: undefined,
+    matchesPlayed: undefined,
+  };
 
   uponClick() {
-    // let retData = this.service.getById(this.singleVal);
-    let retData = this.http.get('http://localhost:8080/api/football-club/2');
+    let retData = this.http.get(`http://localhost:8080/api/football-club/${this.param}`);
     retData.subscribe((data) => {
       this.sampleObj = data;
-      console.log("resultttt", data);
+      console.log("Retieved Data", data);
     },
       (error) => {
         console.log('An error occurred:', error);
@@ -29,13 +39,13 @@ export class UpdateClubComponent {
   }
 
   onSubmit(submitData: any) {
-    let retData = this.service.getById(this.singleVal)
-    console.log("result", submitData);
-    console.log("result", this.singleVal);
-    //   this.http.post('http://localhost:8080/api/football-club', submitData)
-    //     .subscribe((result) => {
-    //       console.log("result", result);
-    //     })
+    this.http.put(`http://localhost:8080/api/football-club/update/${this.param}`, submitData)
+      .subscribe((result) => {
+        console.log("Request sucessfull!", result);
+      },
+        (error) => {
+          console.log("Request Error!", error);
+        })
   }
 
 }
