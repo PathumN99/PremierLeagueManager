@@ -36,6 +36,6 @@ public class FootballClubService {
 
     public String deleteClub(Long id) {
         footballClubRepository.deleteById(id);
-        return "Student successfully deleted!";
+        return "Record successfully deleted!";
     }
 }

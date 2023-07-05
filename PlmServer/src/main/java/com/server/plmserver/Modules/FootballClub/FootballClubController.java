@@ -42,7 +42,7 @@ public class FootballClubController {
         return footballClubService.updateClub(footballClubEntity);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteStudent(@PathVariable("id") Long id) {
         return footballClubService.deleteClub(id);
     }
