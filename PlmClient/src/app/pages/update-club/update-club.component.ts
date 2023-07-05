@@ -39,13 +39,17 @@ export class UpdateClubComponent {
   }
 
   onSubmit(submitData: any) {
-    this.http.put(`http://localhost:8080/api/football-club/update/${this.param}`, submitData)
-      .subscribe((result) => {
-        console.log("Request sucessfull!", result);
-      },
-        (error) => {
-          console.log("Request Error!", error);
-        })
+    const confirmation = confirm("This record will be updated. Are you sure?");
+
+    if (confirmation) {
+      this.http.put(`http://localhost:8080/api/football-club/update/${this.param}`, submitData)
+        .subscribe((result) => {
+          console.log("Request sucessfull!", result);
+        },
+          (error) => {
+            console.log("Request Error!", error);
+          })
+    }
   }
 
 }

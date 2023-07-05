@@ -1,5 +1,7 @@
+
 <div class="form">
     <form #submitData="ngForm" (ngSubmit)="onSubmit(submitData.value)" >
+        <h1 class="header">Add a Football Club</h1>
         <input class="textField" type="text" placeholder="Club Name" name="clubName" ngModel> <br>
         <input class="textField" type="text" placeholder="Club Location" name="clubLocation" ngModel> <br>
         <input class="numField" type="number" placeholder="Number of Wins" name="wins" ngModel>

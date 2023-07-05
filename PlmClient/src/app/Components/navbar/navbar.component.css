@@ -1,3 +1,15 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+.logo {
+    border-radius: 35px;
+    position: relative;
+    width: 85px;
+    height: 63px;
+    display: flex;
+}
+
+.title {
+    margin-left: 15px;
+}

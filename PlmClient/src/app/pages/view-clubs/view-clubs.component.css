@@ -2,3 +2,12 @@
     width: 90%;
     margin: 35px auto;    
 }
+
+.header {
+    margin: 20px;    
+    font-weight: 550;
+    background-image: linear-gradient(to left, #7661b1, #3f3fee);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}

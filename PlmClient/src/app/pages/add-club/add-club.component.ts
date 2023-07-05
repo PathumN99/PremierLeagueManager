@@ -11,10 +11,17 @@ export class AddClubComponent {
   constructor(private http: HttpClient) { }
 
   onSubmit(submitData: any) {
-    this.http.post('http://localhost:8080/api/football-club', submitData)
-      .subscribe((result) => {
-        console.log("result", result);
-      })
+    const confirmation = confirm("This record will be submitted. Are you sure?");
+
+    if (confirmation) {
+      this.http.post('http://localhost:8080/api/football-club', submitData)
+        .subscribe((result) => {
+          console.log("result", result);
+        },
+          (error) => {
+            console.log("An error has occured!", error);
+          })
+    }
   }
 
 }

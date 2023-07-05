@@ -1,1 +1,72 @@
-<p>delete-club works!</p>
+<div class="form">
+    <h1 class="header">Delete Football Club</h1>
+
+    <input #ngmod="ngModel" [class.is-invalid]="ngmod.invalid && ngmod.touched" required class="numField" type="number"
+        placeholder="Club ID" name="club_id" [(ngModel)]="param">
+    <button class="submitBtn" (click)="uponClick()" type="button">Get Club Stats</button>
+    <button class="submitBtn" (click)="clearFields()" type="button">Clear Fields</button> <br>
+
+    <!-- <small *ngIf="idRequired" class="validMsg">Club ID is required</small> <br>
+    <small *ngIf="clubNotExist" class="validMsg">Entered Club ID does not Exist!</small><br> -->
+
+    <div class="validMsg" [ngSwitch]="true">
+        <small *ngSwitchCase="idRequired">Club ID is required</small>
+        <small *ngSwitchCase="clubNotExist">Entered Club ID does not Exist!</small>
+    </div>
+
+
+    <!-- <div *ngIf="ngmod.untouched || ngmod.invalid">
+        <small *ngIf="ngmod.errors.required" class="validMsg">Club ID is required</small> <br>
+        <small *ngIf="ngmod.errors.required" class="validMsg">Entered Club ID does not Exist!</small>
+    </div> -->
+
+    <!-- <small *ngIf="(ngmod.invalid && ngmod.touched); else elseBlock" class="validMsg">Club ID is required</small> <br> -->
+    <!-- <ng-template #elseBlock>
+        <small>Sample else Block</small>
+    </ng-template> -->
+
+    <div *ngIf="hasData">
+
+        <div class="labels">
+            <label>Club Name - </label>
+            <label>{{sampleObj.clubName}}</label>
+        </div>
+        <div class="labels">
+            <label>Club Location - </label>
+            <label>{{sampleObj.clubLocation}}</label>
+        </div>
+        <div class="labels">
+            <label>Number of Wins - </label>
+            <label>{{sampleObj.wins}}</label>
+        </div>
+        <div class="labels">
+            <label>Number of Draws - </label>
+            <label>{{sampleObj.draws}}</label>
+        </div>
+        <div class="labels">
+            <label>Number of Defeats - </label>
+            <label>{{sampleObj.defeats}}</label>
+        </div>
+        <div class="labels">
+            <label>Received Goals - </label>
+            <label>{{sampleObj.goalsReceived}}</label>
+        </div>
+        <div class="labels">
+            <label>Scored Goals - </label>
+            <label>{{sampleObj.goalsScored}}</label>
+        </div>
+        <div class="labels">
+            <label>Number of Points - </label>
+            <label>{{sampleObj.numOfPoints}}</label>
+        </div>
+        <div class="labels">
+            <label>Matches Played - </label>
+            <label>{{sampleObj.matchesPlayed}}</label>
+        </div>
+        <br>
+
+        <button class="submitBtn" (click)="deleteRecord()" type="button">Delete Club</button>
+
+    </div>
+
+</div>
